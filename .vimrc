@@ -11,7 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 if has('gui_running')
-Plugin 'chriskempson/base16-vim'
+        Plugin 'chriskempson/base16-vim'
 endif
 call vundle#end()
 
@@ -38,6 +38,13 @@ set showmatch
 
 set incsearch
 set hlsearch
+
+"Manage backup files
+set backup
+set backupdir=/tmp/.vim-tmp
+set directory=/tmp/.vim-tmp
+set writebackup
+
 
 "Folding
 set foldenable
