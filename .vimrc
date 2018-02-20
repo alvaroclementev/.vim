@@ -10,7 +10,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+if has('gui_running')
 Plugin 'chriskempson/base16-vim'
+endif
 call vundle#end()
 
 filetype plugin indent on
