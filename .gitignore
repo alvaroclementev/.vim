@@ -1,0 +1,8 @@
+# Temporary Files #
+###################
+.netrwhist
+
+# Vundle Files #
+################
+bundle/*
+~/.vim/bundle/*
