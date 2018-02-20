@@ -15,9 +15,8 @@ call vundle#end()
 
 filetype plugin indent on
 
-colorscheme base16-ocean
 syntax enable
-set background=dark
+"set background=dark
 "Link system clipboard with unnamed buffer (regular copy and paste)
 set clipboard=unnamed
 
