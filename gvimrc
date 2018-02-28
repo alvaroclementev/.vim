@@ -11,6 +11,7 @@ if has('gui_running')
     let $MYVIMRC=$HOME.'\.vim\.vimrc'
     "Ignore Files/Directories for Fuzzy Finders
     set wildignore+=*/AppData/*
+    set vb t_vb=
 endif
 
 "if has('autocmd')

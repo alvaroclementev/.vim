@@ -3,7 +3,7 @@ filetype off
 
 let mapleader=" "
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -23,7 +23,7 @@ set background=dark
 set clipboard=unnamed
 
 "Disable beeping
-set noerrorbells visualbell t_vb=
+set vb t_vb=
 
 set tabstop=4
 set softtabstop=4
@@ -41,8 +41,8 @@ set hlsearch
 
 "Manage backup files
 set backup
-set backupdir=.tmp
-set directory=.tmp
+set backupdir=$HOME/.vim/.tmp//
+set directory=$HOME/.vim/.tmp//
 set writebackup
 
 
