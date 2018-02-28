@@ -41,8 +41,8 @@ set hlsearch
 
 "Manage backup files
 set backup
-set backupdir=/tmp/.vim-tmp
-set directory=/tmp/.vim-tmp
+set backupdir=.tmp
+set directory=.tmp
 set writebackup
 
 

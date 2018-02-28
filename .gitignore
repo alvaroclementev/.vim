@@ -5,4 +5,4 @@
 # Vundle Files #
 ################
 bundle/*
-~/.vim/bundle/*
+.tmp/
