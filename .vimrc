@@ -25,11 +25,16 @@ set clipboard=unnamed
 "Disable beeping
 set vb t_vb=
 
+"General editing settings
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 set expandtab
 set number
 set relativenumber
+set wrap
+set linebreak
+set nolist
 
 set backspace=indent,eol,start
 set wildmenu
