@@ -60,7 +60,7 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
-"Way to open files from currend directory
+"Way to open files from current directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
@@ -78,8 +78,8 @@ vnoremap ? ?\v
 nnoremap <Leader>h :set hlsearch!<CR> 
 
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
-set autochdir
-let NERDTreeChDirMode=2
+"set autochdir
+"let NERDTreeChDirMode=2
 nnoremap <Leader>n :NERDTree<CR>
 
 "Ctrl-P Settings
