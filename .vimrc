@@ -44,6 +44,10 @@ set wildmenu
 set lazyredraw
 set showmatch
 
+"Where does the new file appear when splitting
+set splitright
+set splitbelow
+
 set incsearch
 set hlsearch
 
