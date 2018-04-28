@@ -91,7 +91,7 @@ nnoremap <Leader>n :NERDTree<CR>
 "Ctrl-P Settings
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_working_path_mode=0
 "If a file is already open, open new file in new pane
 "let g:ctrlp_switch_buffer='et'
 "To ignore files in .gitignore
