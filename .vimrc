@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'w0rp/ale'
+Plugin 'leafgarland/typescript-vim'
 if has('gui_running')
         Plugin 'chriskempson/base16-vim'
 endif
