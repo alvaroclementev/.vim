@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+
 Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
 if has('gui_running')
