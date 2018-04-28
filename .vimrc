@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'w0rp/ale'
 if has('gui_running')
         Plugin 'chriskempson/base16-vim'
 endif
@@ -95,3 +96,6 @@ let g:ctrlp_working_path_mode='ra'
 "To ignore files in .gitignore
 "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
+
+"ALE Linting settings
+let g:ale_lint_on_text_changed='never'
