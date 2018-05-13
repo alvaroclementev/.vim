@@ -82,8 +82,9 @@ nnoremap / /\v
 nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
-"Map ,h to remove highlight when searching
-nnoremap <Leader>h :set hlsearch!<CR> 
+"Map <Space>h to remove highlight when searching
+nnoremap <Leader>h :nohlsearch<CR>
+"nnoremap <Leader>h :set hlsearch!<CR> 
 
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
 "set autochdir
