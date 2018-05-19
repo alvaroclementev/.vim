@@ -14,6 +14,9 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
+
+"Colorschemes
+Plugin 'tomasiser/vim-code-dark'
 if has('gui_running')
         Plugin 'chriskempson/base16-vim'
 endif
