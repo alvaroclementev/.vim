@@ -19,6 +19,8 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'tomasiser/vim-code-dark'
 if has('gui_running')
         Plugin 'chriskempson/base16-vim'
+        Plugin 'vim-airline/vim-airline'
+        Plugin 'vim-airline/vim-airline-themes'
 endif
 call vundle#end()
 
@@ -31,6 +33,12 @@ set clipboard=unnamed
 
 "Disable beeping
 set vb t_vb=
+
+"Statusline settings
+set encoding=utf-8
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 "General editing settings
 set tabstop=4
