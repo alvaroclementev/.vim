@@ -8,6 +8,12 @@ if has('gui_running')
     "Ignore Files/Directories for Fuzzy Finders
     set wildignore+=*/AppData/*
     set vb t_vb=
+
+    set guioptions-=m "remove top menu bar
+    set guioptions-=T "remove toolbar
+    set guioptions-=r "remove right scroll bar
+    set guioptions-=L "remove left scroll bar
+    
 endif
 
 "if has('autocmd')
