@@ -117,6 +117,6 @@ let g:ale_lint_on_text_changed='never'
 
 "TRY THIS OUT!
 
-"let g:ale_sign_error='●' "Less aggresive sign error than '>>'
-"let g:ale_sign_warning='.' 
-"let g:ale_lint_on_open=0 "Less distracting when opening a file
+let g:ale_sign_error='●' "Less aggresive sign error than '>>'
+let g:ale_sign_warning='.' 
+let g:ale_lint_on_open=0 "Less distracting when opening a file
