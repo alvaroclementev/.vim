@@ -87,7 +87,7 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 "(wrapped lines are not ignored)
-set textwidth=80
+" set textwidth=80
 "Map \v to turn very magic mode in searches and substitutions
 nnoremap / /\v
 nnoremap ? ?\v
@@ -108,15 +108,19 @@ let g:ctrlp_cmd='CtrlP'
 let g:ctrlp_working_path_mode=0
 "If a file is already open, open new file in new pane
 "let g:ctrlp_switch_buffer='et'
-"To ignore files in .gitignore
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"To ignore files in .gitignore and speed it up by x100
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
 
 "ALE Linting settings
+let g:ale_linters = {
+  \ 'python': ['flake8'] ,
+  \ }
+
 let g:ale_lint_on_text_changed='never'
 
 "TRY THIS OUT!
-
 let g:ale_sign_error='●' "Less aggresive sign error than '>>'
 let g:ale_sign_warning='.' 
 let g:ale_lint_on_open=0 "Less distracting when opening a file
