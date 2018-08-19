@@ -114,9 +114,9 @@ let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
 
 "ALE Linting settings
-let g:ale_linters = {
-  \ 'python': ['flake8'] ,
-  \ }
+"let g:ale_linters = {
+"  \ 'python': ['flake8'] ,
+"  \ }
 
 let g:ale_lint_on_text_changed='never'
 
