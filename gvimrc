@@ -14,6 +14,8 @@ if has('gui_running')
     set guioptions-=r "remove right scroll bar
     set guioptions-=L "remove left scroll bar
     
+    "If airline is installed, it already shows the mode
+    set noshowmode
 endif
 
 "if has('autocmd')
