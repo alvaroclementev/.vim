@@ -102,6 +102,18 @@ nnoremap <Leader>h :nohlsearch<CR>
 "let NERDTreeChDirMode=2
 nnoremap <Leader>n :NERDTree<CR>
 
+"The Silver Searcher (Ag)
+if executable('ag')
+    "Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    "Use Ag in Ctrl-P for listing files.
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    "Ag is fast enough CtrlP needs no cache
+    let g:ctrp_use_caching = 0
+endif
+
 "Ctrl-P Settings
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
