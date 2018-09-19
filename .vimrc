@@ -34,6 +34,28 @@ set clipboard=unnamed
 "Disable beeping
 set vb t_vb=
 
+"Allows for changing buffer without saving (CAUTION!)
+set hidden
+
+"Statusline settings
+set encoding=utf-8
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+"General editing settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+set number
+set relativenumber
+set wrap
+set linebreak
+set nolist
 "Statusline settings
 set encoding=utf-8
 set laststatus=2
