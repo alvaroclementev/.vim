@@ -118,7 +118,7 @@ nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
 "Map <Space>h to remove highlight when searching
-nnoremap <Leader>h :nohlsearch<CR>
+nnoremap <silent> <Leader>h :nohlsearch<CR>
 
 "Common typos when exiting or saving
 command W w
