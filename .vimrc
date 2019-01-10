@@ -101,6 +101,8 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
+"MAPPINGS
+"TODO: Revise these ones
 "Way to open files from current directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
@@ -117,7 +119,13 @@ vnoremap / /\v
 vnoremap ? ?\v
 "Map <Space>h to remove highlight when searching
 nnoremap <Leader>h :nohlsearch<CR>
-"nnoremap <Leader>h :set hlsearch!<CR> 
+
+"Common typos when exiting or saving
+command W w
+command WQ wq
+command Wq wq
+command Q q
+
 
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
 "set autochdir
