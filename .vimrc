@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'mileszs/ack.vim'
 
 Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
@@ -106,6 +107,9 @@ nnoremap <Leader>n :NERDTree<CR>
 if executable('ag')
     "Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
+    
+    "Set up ack.vim to use Ag
+    let g:ackprg = 'ag --nogroup --nocolor --column'
 
     "Use Ag in Ctrl-P for listing files.
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -126,9 +130,9 @@ let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
 
 "ALE Linting settings
-let g:ale_linters = {
-  \ 'python': ['flake8'] ,
-  \ }
+"let g:ale_linters = {
+  "\ 'python': ['flake8'] ,
+  "\ }
 
 let g:ale_lint_on_text_changed='never'
 
