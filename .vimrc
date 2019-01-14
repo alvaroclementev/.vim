@@ -35,6 +35,28 @@ set clipboard=unnamed
 "Disable beeping
 set vb t_vb=
 
+"Allows for changing buffer without saving (CAUTION!)
+set hidden
+
+"Statusline settings
+set encoding=utf-8
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+"General editing settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+set number
+set relativenumber
+set wrap
+set linebreak
+set nolist
 "Statusline settings
 set encoding=utf-8
 set laststatus=2
@@ -80,6 +102,8 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
+"MAPPINGS
+"TODO: Revise these ones
 "Way to open files from current directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
@@ -95,8 +119,14 @@ nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
 "Map <Space>h to remove highlight when searching
-nnoremap <Leader>h :nohlsearch<CR>
-"nnoremap <Leader>h :set hlsearch!<CR> 
+nnoremap <silent> <Leader>h :nohlsearch<CR>
+
+"Common typos when exiting or saving
+command W w
+command WQ wq
+command Wq wq
+command Q q
+
 
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
 "set autochdir

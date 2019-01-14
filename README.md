@@ -37,6 +37,8 @@ After Vundle is installed, run from inside vim
 :PluginInstall
 ```
 
+For the Hack Font (Patched for powerline by default), install from [here](https://github.com/source-foundry/Hack)
+
 #### List of plugins installed
   * **Vundle.vim**: Plugin manager
   * **NERDTree**: Tree filesystem display
