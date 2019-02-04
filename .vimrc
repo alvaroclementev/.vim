@@ -131,7 +131,7 @@ command Q q
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
 "set autochdir
 "let NERDTreeChDirMode=2
-nnoremap <Leader>n :NERDTree<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 "The Silver Searcher (Ag)
 if executable('ag')
