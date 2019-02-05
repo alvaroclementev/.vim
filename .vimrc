@@ -105,11 +105,10 @@ set foldmethod=indent
 "MAPPINGS
 "TODO: Revise these ones
 "Way to open files from current directory
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <leader>et :tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
 "(wrapped lines are not ignored)
 " set textwidth=80
@@ -121,11 +120,19 @@ vnoremap ? ?\v
 "Map <Space>h to remove highlight when searching
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
+"Other nice mappings
+nnoremap <leader>ec :vsplit $MYVIMRC<CR>
+nnoremap <leader>sc :source $MYVIMRC<CR>
+"Capitalize WORD under cursor in INSERT MODE
+inoremap <C-U> <ESC>viWUEa
+"Capitalize WORD under cursor in NORMAL MODE
+nnoremap <Leader>u viWUE
+
 "Common typos when exiting or saving
-command W w
-command WQ wq
-command Wq wq
-command Q q
+command! W w
+command! WQ wq
+command! Wq wq
+command! Q q
 
 
 "NERDTree settings (make NERDTreeCWD the active buffer's directory)
