@@ -1,11 +1,11 @@
 set nocompatible
 filetype off
-
 let mapleader=" "
 
+" Plugin (Vundle) Settings {{{
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
-"Let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
@@ -16,7 +16,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
 
-"Colorschemes
+" Colorschemes
 Plugin 'tomasiser/vim-code-dark'
 if has('gui_running')
         Plugin 'chriskempson/base16-vim'
@@ -24,27 +24,21 @@ if has('gui_running')
         Plugin 'vim-airline/vim-airline-themes'
 endif
 call vundle#end()
-
 filetype plugin indent on
+" }}}
 
+" Sensible default settings for vim UX {{{
 syntax enable
 set background=dark
-"Link system clipboard with unnamed buffer (regular copy and paste)
+" Link system clipboard with unnamed buffer (regular copy and paste)
 set clipboard=unnamed
-
-"Disable beeping
+" Disable beeping
 set vb t_vb=
-
-"Allows for changing buffer without saving (CAUTION!)
+" Allows for changing buffer without saving (CAUTION!)
 set hidden
+" }}}
 
-"Statusline settings
-set encoding=utf-8
-set laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-
-"General editing settings
+" General editing settings {{{
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -57,52 +51,43 @@ set relativenumber
 set wrap
 set linebreak
 set nolist
-"Statusline settings
-set encoding=utf-8
-set laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-
-"General editing settings
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set smartindent
-
-set number
-set relativenumber
-set wrap
-set linebreak
-set nolist
-
 set backspace=indent,eol,start
 set wildmenu
 set lazyredraw
 set showmatch
 
-"Where does the new file appear when splitting
+" Where does the new file appear when splitting
 set splitright
 set splitbelow
 
 set incsearch
 set hlsearch
+" }}}
 
-"Manage backup files
+" Statusline settings {{{
+set encoding=utf-8
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" }}}
+
+
+" Manage backup files {{{
 set backup
 set backupdir=$HOME/.vim/.tmp//
 set directory=$HOME/.vim/.tmp//
 set writebackup
+" }}}
 
 
-"Folding
+" Folding {{{
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+" }}}
 
-"MAPPINGS
+" Custom MAPPINGS {{{
 "TODO: Revise these ones
 "Way to open files from current directory
 nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -117,30 +102,33 @@ nnoremap / /\v
 nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
-"Map <Space>h to remove highlight when searching
+" Map <Space>h to remove highlight when searching
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
-"Other nice mappings
+" Other nice mappings
 nnoremap <leader>ec :vsplit $MYVIMRC<CR>
 nnoremap <leader>sc :source $MYVIMRC<CR>
 "Capitalize WORD under cursor in INSERT MODE
 inoremap <C-U> <ESC>viWUEa
 "Capitalize WORD under cursor in NORMAL MODE
 nnoremap <Leader>u viWUE
+" }}}
 
-"Common typos when exiting or saving
+" Common typos when exiting or saving {{{
 command! W w
 command! WQ wq
 command! Wq wq
 command! Q q
+" }}}
 
 
-"NERDTree settings (make NERDTreeCWD the active buffer's directory)
+" NERDTree settings (make NERDTreeCWD the active buffer's directory) {{{
 "set autochdir
 "let NERDTreeChDirMode=2
 nnoremap <Leader>n :NERDTreeToggle<CR>
+" }}}
 
-"The Silver Searcher (Ag)
+" The Silver Searcher (Ag) {{{
 if executable('ag')
     "Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
@@ -154,8 +142,9 @@ if executable('ag')
     "Ag is fast enough CtrlP needs no cache
     let g:ctrp_use_caching = 0
 endif
+" }}}
 
-"Ctrl-P Settings
+" Ctrl-P Settings {{{
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
 let g:ctrlp_working_path_mode=0
@@ -165,15 +154,24 @@ let g:ctrlp_working_path_mode=0
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
 let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
+" }}}
 
-"ALE Linting settings
+" ALE Linting settings {{{
 "let g:ale_linters = {
   "\ 'python': ['flake8'] ,
   "\ }
-
 let g:ale_lint_on_text_changed='never'
 
-"TRY THIS OUT!
+" TRY THIS OUT!
 let g:ale_sign_error='●' "Less aggresive sign error than '>>'
 let g:ale_sign_warning='.' 
 let g:ale_lint_on_open=0 "Less distracting when opening a file
+" }}} 
+
+
+" Vimscript file settings ------------------------ {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
