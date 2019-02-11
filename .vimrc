@@ -94,6 +94,15 @@ nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>et :tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>
+" Other nice editingmappings
+nnoremap <leader>ec :vsplit $MYVIMRC<CR>
+nnoremap <leader>sc :source $MYVIMRC<CR>
+" Open previous buffer on vsplit
+nnoremap <leader>ep :execute "rightbelow vsplit " . bufname("#")<cr>
+" Manage Trailing Whitespaces
+nnoremap <silent> <Leader>t mz:%s/\s\+$//<CR>`z
+nnoremap <silent> <Leader>w :match Error /\s\+$/<CR>
+nnoremap <silent> <Leader>W :match<CR>
 
 "(wrapped lines are not ignored)
 " set textwidth=80
@@ -105,9 +114,6 @@ vnoremap ? ?\v
 " Map <Space>h to remove highlight when searching
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
-" Other nice mappings
-nnoremap <leader>ec :vsplit $MYVIMRC<CR>
-nnoremap <leader>sc :source $MYVIMRC<CR>
 "Capitalize WORD under cursor in INSERT MODE
 inoremap <C-U> <ESC>viWUEa
 "Capitalize WORD under cursor in NORMAL MODE
@@ -128,20 +134,20 @@ command! Q q
 nnoremap <Leader>n :NERDTreeToggle<CR>
 " }}}
 
-" The Silver Searcher (Ag) {{{
-if executable('ag')
-    "Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
-    
-    "Set up ack.vim to use Ag
-    let g:ackprg = 'ag --nogroup --nocolor --column'
-
-    "Use Ag in Ctrl-P for listing files.
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    "Ag is fast enough CtrlP needs no cache
-    let g:ctrp_use_caching = 0
-endif
+" The Silver Searcher (Ag) TODO: change grepprg to use Ag {{{
+" if executable('ag')
+"     "Use ag over grep
+"     set grepprg=ag\ --nogroup\ --nocolor
+"     
+"     "Set up ack.vim to use Ag
+"     let g:ackprg = 'ag --nogroup --nocolor --column'
+" 
+"     "Use Ag in Ctrl-P for listing files.
+"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" 
+"     "Ag is fast enough CtrlP needs no cache
+"     let g:ctrp_use_caching = 0
+" endif
 " }}}
 
 " Ctrl-P Settings {{{
