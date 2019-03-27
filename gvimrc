@@ -16,6 +16,10 @@ if has('gui_running')
     
     "If airline is installed, it already shows the mode
     set noshowmode
+
+    "Remove F1 help mapping
+    nnoremap <F1> <NOP>
+    inoremap <F1> <NOP>
 endif
 
 "if has('autocmd')
