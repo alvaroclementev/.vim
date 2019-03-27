@@ -1,6 +1,9 @@
 set nocompatible
 filetype off
 let mapleader=" "
+" Trying this for now
+" TODO: See if this is working for me
+let maplocalleader="-"
 
 " Plugin (Vundle) Settings {{{
 set rtp+=$HOME/.vim/bundle/Vundle.vim
