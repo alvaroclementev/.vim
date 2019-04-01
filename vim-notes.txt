@@ -7,7 +7,8 @@ Cada vez que en "Insert Mode" se escribe la palabra en la izquierda y se
 presiona una tecla no caracter (espacio, enter), se sustituye por la derecha.
 Esto es interesante para corregir typos
 
-
+Plugins para probar:
+    coc.nvim
 
 
 NOTAS:
