@@ -2,7 +2,6 @@
 ###################
 .netrwhist
 
-# Vundle Files #
+# Vim Plug Files #
 ################
-bundle/*
-.tmp/*
+plugged/*

@@ -1,34 +1,26 @@
 set nocompatible
-filetype off
+" Plugin (Vim Plug) Settings {{{
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'mileszs/ack.vim'
+
+Plug 'w0rp/ale'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" Colorschemes
+Plug 'tomasiser/vim-code-dark'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+call plug#end()
+" }}}
 let mapleader=" "
 " Trying this for now
 " TODO: See if this is working for me
 let maplocalleader="-"
-
-" Plugin (Vundle) Settings {{{
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'mileszs/ack.vim'
-
-Plugin 'w0rp/ale'
-Plugin 'leafgarland/typescript-vim'
-
-" Colorschemes
-Plugin 'tomasiser/vim-code-dark'
-if has('gui_running')
-        Plugin 'chriskempson/base16-vim'
-        Plugin 'vim-airline/vim-airline'
-        Plugin 'vim-airline/vim-airline-themes'
-endif
-call vundle#end()
-filetype plugin indent on
-" }}}
 
 " TODO: See :h completefunc to improve autocompletion
 " coc.vim ? other LSP autocomplete engine
@@ -51,6 +43,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
+set smartcase
 
 set number
 set relativenumber
@@ -79,10 +72,8 @@ let g:airline_right_sep = ''
 
 
 " Manage backup files {{{
-set backup
-set backupdir=$HOME/.vim/.tmp//
-set directory=$HOME/.vim/.tmp//
-set writebackup
+set nobackup
+set nowritebackup
 " }}}
 
 
@@ -96,19 +87,19 @@ set foldmethod=indent
 " Custom MAPPINGS {{{
 "TODO: Revise these ones
 "Way to open files from current directory
-nnoremap <leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
-nnoremap <leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
-nnoremap <leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
-nnoremap <leader>et :tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <Leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <Leader>es :sp <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <Leader>ev :vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>
+nnoremap <Leader>et :tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>
 " Other nice editingmappings
-nnoremap <leader>ec :vsplit $MYVIMRC<CR>
-nnoremap <leader>sc :source $MYVIMRC<CR>
+nnoremap <Leader>ec :vsplit $MYVIMRC<CR>
+nnoremap <Leader>sc :source $MYVIMRC<CR>
 " Open previous buffer on vsplit
-nnoremap <leader>ep :execute "rightbelow vsplit " . bufname("#")<cr>
+nnoremap <Leader>ep :execute "rightbelow vsplit " . bufname("#")<cr>
 " Manage Trailing Whitespaces
-nnoremap <silent> <Leader>t mz:%s/\s\+$//<CR>`z
-nnoremap <silent> <Leader>w :match Error /\s\+$/<CR>
-nnoremap <silent> <Leader>W :match<CR>
+nnoremap <silent> <Leader>td mz:%s/\s\+$//<CR>`z
+nnoremap <silent> <Leader>tw :match Error /\s\+$/<CR>
+nnoremap <silent> <Leader>tW :match<CR>
 
 "(wrapped lines are not ignored)
 " set textwidth=80
