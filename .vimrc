@@ -2,7 +2,12 @@ set nocompatible
 " Plugin (Vim Plug) Settings {{{
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+
+" Fuzzy finder
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'tpope/vim-surround'
 Plug 'mileszs/ack.vim'
 
@@ -147,16 +152,28 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " endif
 " }}}
 
-" Ctrl-P Settings {{{
-let g:ctrlp_map='<c-p>'
-let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_working_path_mode='ra'
-"If a file is already open, open new file in new pane
-"let g:ctrlp_switch_buffer='et'
-"To ignore files in .gitignore and speed it up by x100
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
-let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
+"" Ctrl-P Settings {{{
+"let g:ctrlp_map='<c-p>'
+"let g:ctrlp_cmd='CtrlP'
+"let g:ctrlp_working_path_mode='ra'
+""If a file is already open, open new file in new pane
+""let g:ctrlp_switch_buffer='et'
+""To ignore files in .gitignore and speed it up by x100
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
+"let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
+"" }}}
+
+" FZF Settings {{{
+nnoremap <Leader>f :Files<CR>     " Fuzzy find files in current directory
+nnoremap <Leader>g :GFiles<CR>    " Fuzzy find git tracked files in current directory
+nnoremap <Leader>/ :BLines<CR>    " Fuzzy find lines in current file
+nnoremap <Leader>b :Buffers<CR>   " Fuzzy find an open buffer
+nnoremap <Leader>r :Rg<CR>        " Fuzzy find text in the working directory
+nnoremap <Leader>cc :Commands<CR> " Fuzzy find Vim commands (like Ctrl-Shift-P
+"                                 " in VSC or Sublime
+" }}}
+
 " }}}
 
 " ALE Linting settings {{{
