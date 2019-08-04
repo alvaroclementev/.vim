@@ -9,6 +9,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
 
 Plug 'w0rp/ale'
