@@ -91,6 +91,12 @@ set foldmethod=indent
 " }}}
 
 " Custom MAPPINGS {{{
+" Split navigation
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
+
 "TODO: Revise these ones
 "Way to open files from current directory
 nnoremap <Leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
