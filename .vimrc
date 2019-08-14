@@ -195,6 +195,14 @@ let g:ale_sign_warning='.'
 let g:ale_lint_on_open=0 "Less distracting when opening a file
 " }}} 
 
+" FileType specific settings {{{
+augroup filetype_make
+    " Makefiles need explicit tab characters
+    autocmd!
+    autocmd FileType make setlocal noexpandtab
+augroup END
+
+" }}}
 
 " Vimscript file settings ------------------------ {{{
 augroup filetype_vim
