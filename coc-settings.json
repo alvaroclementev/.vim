@@ -1,6 +1,7 @@
 {
     "suggest.minTriggerInputLength": 2,
     "diagnostic.displayByAle": true,
+    "coc.preferences.extensionUpdateCheck": "never",
     "languageserver": {
         "python": {
             "command": "python",
