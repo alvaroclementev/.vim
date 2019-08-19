@@ -172,12 +172,13 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 "" }}}
 
 " FZF Settings {{{
-nnoremap <Leader>f :Files<CR>     " Fuzzy find files in current directory
-nnoremap <Leader>g :GFiles<CR>    " Fuzzy find git tracked files in current directory
+nnoremap <Leader>f :GFiles<CR>    " Fuzzy find git tracked files in current directory
+nnoremap <Leader>F :Files<CR>     " Fuzzy find files in current directory
 nnoremap <Leader>/ :BLines<CR>    " Fuzzy find lines in current file
 nnoremap <Leader>b :Buffers<CR>   " Fuzzy find an open buffer
 nnoremap <Leader>r :Rg<CR>        " Fuzzy find text in the working directory
 nnoremap <Leader>cc :Commands<CR> " Fuzzy find Vim commands (like Ctrl-Shift-P
+nnoremap <Leader>H :Help<CR>     " Fuzzy find files in current directory
 "                                 " in VSC or Sublime
 " }}}
 
