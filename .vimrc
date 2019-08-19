@@ -6,12 +6,14 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Fuzzy finder
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+" Plug 'mileszs/ack.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-repeat'
 
+" Language related plugins
 Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -24,6 +26,7 @@ Plug 'chriskempson/base16-vim'
 call plug#end()
 " }}}
 let mapleader=" "
+nnoremap <Space> <NOP>
 " Trying this for now
 " TODO: See if this is working for me
 let maplocalleader="-"
@@ -35,11 +38,14 @@ let maplocalleader="-"
 syntax enable
 set background=dark
 " Link system clipboard with unnamed buffer (regular copy and paste)
-set clipboard=unnamed
+set clipboard=unnamedplus
 " Disable beeping
 set vb t_vb=
 " Allows for changing buffer without saving (CAUTION!)
 set hidden
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 " }}}
 
 " General editing settings {{{
