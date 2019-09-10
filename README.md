@@ -25,21 +25,23 @@ ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
 ### Plugins
-Vundle is configured in the .vimrc file, but needs to be installed manually in
-each new machine using this file. To install navigate to *.vim/* and
-run in cmd:
+Vim Plug is configured in the .vimrc file, but needs to be installed manually in
+each new machine using this file. However it has to be manually installed first.
+To do so, run this command from anywhere:
 ```
-git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-After Vundle is installed, run from inside vim
+After Vim Plug is installed, open vim and run:
 ```vim
-:PluginInstall
+:PlugInstall
 ```
 
 For the Hack Font (Patched for powerline by default), install from [here](https://github.com/source-foundry/Hack)
 
-#### List of plugins installed
-  * **Vundle.vim**: Plugin manager
+#### List of plugins installed (incomplete)
+  * **Vim Plug**: Plugin manager
   * **NERDTree**: Tree filesystem display
-  * **Ctrl-P**: Fuzzy file finder
+  * **FZF**: Fuzzy file finder
+  * **Coc.nvim**: LSP client
