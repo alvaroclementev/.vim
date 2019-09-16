@@ -14,9 +14,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " Language related plugins
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Scheme
+Plug 'guns/vim-sexp' "For selecting forms
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
@@ -58,7 +62,7 @@ set smartindent
 set smartcase
 
 set number
-set relativenumber
+" set relativenumber
 set wrap
 set linebreak
 set nolist
@@ -84,6 +88,7 @@ let g:airline_right_sep = ''
 
 
 " Manage backup files {{{
+set noswapfile
 set nobackup
 set nowritebackup
 " }}}
@@ -103,6 +108,9 @@ nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 
+" Spell Checking
+nnoremap <silent> <F3> :setlocal spell! spelllang=en_us<CR>
+
 "TODO: Revise these ones
 "Way to open files from current directory
 nnoremap <Leader>ew :e <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -112,6 +120,7 @@ nnoremap <Leader>et :tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>
 " Other nice editingmappings
 nnoremap <Leader>ec :vsplit $MYVIMRC<CR>
 nnoremap <Leader>sc :source $MYVIMRC<CR>
+nnoremap <Leader>sf :source %<CR>
 " Open previous buffer on vsplit
 nnoremap <Leader>ep :execute "rightbelow vsplit " . bufname("#")<cr>
 " Manage Trailing Whitespaces
