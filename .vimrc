@@ -197,6 +197,66 @@ nnoremap <Leader>H :Help<CR>     " Fuzzy find files in current directory
 "                                 " in VSC or Sublime
 " }}}
 
+" Coc.vim settings {{{
+" TODO: Test these commented settings
+" For better display for messages
+"set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's
+" default 4000
+"set updatetime=300
+" Don't give |ins-completion-menu| messages
+"set shotmess+=c
+" Always show signcolumns
+"set signcolumns=yes
+" Highlight symbol under the cursor
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" to match the comments in the JSONC filetype
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" To trigger the completion with <TAB>
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" Make <TAB> the custom key to trigger completion
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+" Make C-Space trigger the suggestions
+inoremap <silent><expr> <C-Space> coc#refresh()
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show the documentation
+nmap K <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    echom "Showing documentation"
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h ' . expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+" Show showSignatureHelp 
+inoremap <C-H> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
+
+" Remap for rename current word
+nmap <Leader>cn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <Leader>f <Plug>(coc-format-selected)
+vmap <Leader>f <Plug>(coc-format-selected)
 " }}}
 
 " ALE Linting settings {{{
