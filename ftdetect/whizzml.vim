@@ -1,4 +1,4 @@
 augroup whizzml_ft
     au!
-    autocmd BufNewFile,BufRead *.whizzml set syntax=lisp
+    autocmd BufNewFile,BufRead *.whizzml set ft=lisp
 augroup END
