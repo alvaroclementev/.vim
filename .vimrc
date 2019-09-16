@@ -137,6 +137,8 @@ vnoremap / /\v
 vnoremap ? ?\v
 " Map <Space>h to remove highlight when searching
 nnoremap <silent> <Leader>h :nohlsearch<CR>
+nnoremap <Leader>* /<C-R><C-A><CR>
+nnoremap <Leader># ?<C-R><C-A><CR>
 
 "Capitalize WORD under cursor in INSERT MODE
 inoremap <C-U> <ESC>viWUEa
