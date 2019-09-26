@@ -42,7 +42,7 @@ let maplocalleader="-"
 syntax enable
 set background=dark
 " Link system clipboard with unnamed buffer (regular copy and paste)
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 " Disable beeping
 set vb t_vb=
 " Allows for changing buffer without saving (CAUTION!)
