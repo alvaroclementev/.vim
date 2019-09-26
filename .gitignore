@@ -4,4 +4,5 @@
 
 # Vim Plug Files #
 ################
+autoload/plug.vim
 plugged/*
