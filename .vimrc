@@ -50,6 +50,9 @@ set hidden
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+nnoremap j gj
+nnoremap k gk
 " }}}
 
 " General editing settings {{{
