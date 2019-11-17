@@ -88,6 +88,16 @@ set encoding=utf-8
 set laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" TODO: Review this customization
+" function! AirlineInit()
+"     let g:airline_section_z = '%l%c'
+" endfunction
+" autocmd VimEnter * call AirlineInit()
 " }}}
 
 
