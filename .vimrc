@@ -49,6 +49,8 @@ set hidden
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+set ignorecase
+set smartcase
 
 nnoremap j gj
 nnoremap k gk
@@ -110,6 +112,10 @@ nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 
+" Buffer navigation
+nnoremap gt :bn<CR>
+nnoremap gT :bn<CR>
+
 " Spell Checking
 nnoremap <silent> <F3> :setlocal spell! spelllang=en_us<CR>
 
@@ -166,13 +172,13 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " if executable('ag')
 "     "Use ag over grep
 "     set grepprg=ag\ --nogroup\ --nocolor
-"     
+"
 "     "Set up ack.vim to use Ag
 "     let g:ackprg = 'ag --nogroup --nocolor --column'
-" 
+"
 "     "Use Ag in Ctrl-P for listing files.
 "     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" 
+"
 "     "Ag is fast enough CtrlP needs no cache
 "     let g:ctrp_use_caching = 0
 " endif
@@ -208,7 +214,7 @@ nnoremap <Leader>H :Help<CR>     " Fuzzy find files in current directory
 
 " You will have bad experience for diagnostic messages when it's
 " default 4000
-"set updatetime=300
+set updatetime=300
 " Don't give |ins-completion-menu| messages
 "set shotmess+=c
 " Always show signcolumns
