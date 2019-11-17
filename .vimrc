@@ -17,10 +17,12 @@ Plug 'tpope/vim-repeat'
 " Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Scheme
+
+" Lisps
 Plug 'guns/vim-sexp' "For selecting forms
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
+" Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
+Plug 'jpalardy/vim-slime'
 
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
@@ -274,7 +276,13 @@ let g:ale_lint_on_text_changed='never'
 let g:ale_sign_error='●' "Less aggresive sign error than '>>'
 let g:ale_sign_warning='.' 
 let g:ale_lint_on_open=0 "Less distracting when opening a file
-" }}} 
+" }}}
+
+" vim-SLIME
+let g:slime_target='tmux'
+let g:slime_paste_file=tempname()
+let g:slime_default_config={"socket_name": "default", "target_pane": "{right-of}"}
+let g:slime_dont_ask_default=1
 
 " FileType specific settings {{{
 augroup filetype_make
