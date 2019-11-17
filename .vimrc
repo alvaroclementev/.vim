@@ -37,9 +37,6 @@ nnoremap <Space> <NOP>
 " TODO: See if this is working for me
 let maplocalleader="-"
 
-" TODO: See :h completefunc to improve autocompletion
-" coc.vim ? other LSP autocomplete engine
-
 " Sensible default settings for vim UX {{{
 syntax enable
 set background=dark
@@ -217,7 +214,7 @@ nnoremap <Leader>H :Help<CR>     " Fuzzy find files in current directory
 " Always show signcolumns
 "set signcolumns=yes
 " Highlight symbol under the cursor
-"autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " to match the comments in the JSONC filetype
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -255,7 +252,7 @@ function! s:show_documentation()
     endif
 endfunction
 
-" Show showSignatureHelp 
+" Show showSignatureHelp
 inoremap <C-H> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
 
 " Remap for rename current word
@@ -264,6 +261,7 @@ nmap <Leader>cn <Plug>(coc-rename)
 " Remap for format selected region
 xmap <Leader>f <Plug>(coc-format-selected)
 vmap <Leader>f <Plug>(coc-format-selected)
+command! -nargs=0 Format :call CocAction('format')
 " }}}
 
 " ALE Linting settings {{{
@@ -274,7 +272,7 @@ let g:ale_lint_on_text_changed='never'
 
 " TRY THIS OUT!
 let g:ale_sign_error='●' "Less aggresive sign error than '>>'
-let g:ale_sign_warning='.' 
+let g:ale_sign_warning='.'
 let g:ale_lint_on_open=0 "Less distracting when opening a file
 " }}}
 
