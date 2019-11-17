@@ -1,3 +1,6 @@
+Settings que mirar:
+  - formatoptions (j, n)
+
 Probar las configuraciones de Insert Abbreviations ("iabbr")
 Por ejemplo:
     iabbr ture true
@@ -9,7 +12,7 @@ Esto es interesante para corregir typos
 
 Plugins para probar:
     coc.nvim
-
+    vim-slime (send raw text to other tmux pane, for sending text to a REPL)
 
 NOTAS:
 En vimhelp, el comando para seguir los links es <C-+>, no <C-]>
