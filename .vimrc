@@ -41,6 +41,8 @@ let maplocalleader="-"
 " Sensible default settings for vim UX {{{
 syntax enable
 set background=dark
+let base16colorspace=256
+colorscheme base16-default-dark
 " Link system clipboard with unnamed buffer (regular copy and paste)
 " set clipboard=unnamedplus
 " Disable beeping
