@@ -13,11 +13,16 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+" Plug 'w0rp/ale'
 
 " Language related plugins
-" Plug 'w0rp/ale'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+
+" Language Client
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" JS / TS
+Plug 'pangloss/vim-javascript',  { 'for': 'javascript' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
 
 " Lisps
 Plug 'guns/vim-sexp' "For selecting forms
@@ -301,12 +306,27 @@ let g:slime_paste_file=tempname()
 let g:slime_default_config={"socket_name": "default", "target_pane": "{right-of}"}
 let g:slime_dont_ask_default=1
 
+" Vue
+
 " FileType specific settings {{{
 augroup filetype_make
     " Makefiles need explicit tab characters
     autocmd!
     autocmd FileType make setlocal noexpandtab
 augroup END
+
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
+augroup filetype_vue
+    autocmd!
+    " FIXME: We would expect the vim-vue plugin to use the correct widths
+    "        but for now this should do...
+    autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 
 " }}}
 
