@@ -30,6 +30,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 " Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 Plug 'jpalardy/vim-slime'
 
+
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
@@ -89,6 +90,9 @@ set splitbelow
 
 set incsearch
 set hlsearch
+
+"diffing settings
+set diffopt+=vertical
 " }}}
 
 " Statusline settings {{{
@@ -131,8 +135,8 @@ nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 
 " Buffer navigation
-nnoremap gt :bn<CR>
-nnoremap gT :bn<CR>
+nnoremap gb :bn<CR>
+nnoremap gB :bp<CR>
 
 " Spell Checking
 nnoremap <silent> <F3> :setlocal spell! spelllang=en_us<CR>
@@ -183,7 +187,7 @@ command! Q q
 " NERDTree settings (make NERDTreeCWD the active buffer's directory) {{{
 "set autochdir
 "let NERDTreeChDirMode=2
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 " }}}
 
 " The Silver Searcher (Ag) TODO: change grepprg to use Ag {{{
@@ -288,17 +292,17 @@ vmap <Leader>f <Plug>(coc-format-selected)
 command! -nargs=0 Format :call CocAction('format')
 " }}}
 
-" ALE Linting settings {{{
-"let g:ale_linters = {
-  "\ 'python': ['flake8'] ,
-  "\ }
-let g:ale_lint_on_text_changed='never'
+" LaTeX
+augroup filetype_tex
+    autocmd!
+    " Compile to PDF in silent mode
+    autocmd Filetype tex nnoremap <silent> <Leader>tt :!latexmk -pdf -silent %<CR><CR>
+    " Compile to PDF verbose
+    autocmd Filetype tex nnoremap <silent> <Leader>ta :!latexmk -pdf %<CR>
+    " Open PDF preview (Skim has live preview prebuilt)
+    autocmd Filetype tex nnoremap <silent> <Leader>T :!open -a Skim %:r.pdf<CR><CR>
+augroup END
 
-" TRY THIS OUT!
-let g:ale_sign_error='●' "Less aggresive sign error than '>>'
-let g:ale_sign_warning='.'
-let g:ale_lint_on_open=0 "Less distracting when opening a file
-" }}}
 
 " vim-SLIME
 let g:slime_target='tmux'
@@ -306,7 +310,8 @@ let g:slime_paste_file=tempname()
 let g:slime_default_config={"socket_name": "default", "target_pane": "{right-of}"}
 let g:slime_dont_ask_default=1
 
-" Vue
+" vim-vue
+let g:vue_pre_processors = 'detect_on_enter'
 
 " FileType specific settings {{{
 augroup filetype_make
