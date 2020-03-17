@@ -30,6 +30,8 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 " Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 Plug 'jpalardy/vim-slime'
 
+" Eye candy
+Plug 'machakann/vim-highlightedyank'
 
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
@@ -90,6 +92,9 @@ set splitbelow
 
 set incsearch
 set hlsearch
+
+" colorcolumn
+set colorcolumn=80
 
 "diffing settings
 set diffopt+=vertical
@@ -311,6 +316,12 @@ augroup filetype_tex
     autocmd Filetype tex nnoremap <silent> <Leader>T :!open -a Skim %:r.pdf<CR><CR>
 augroup END
 
+" vim-highlightedyank
+" Compatibility with versions < 8.0.1394
+if !exists('##TextYankPost')
+    map y <Plug>(highlightedyank)
+endif
+let g:highlightedyank_highlight_duration=750
 
 " vim-SLIME
 let g:slime_target='tmux'
