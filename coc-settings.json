@@ -2,6 +2,8 @@
     "suggest.minTriggerInputLength": 2,
     "diagnostic.displayByAle": false,
     "coc.preferences.extensionUpdateCheck": "never",
+    //Python
+    "python.jediEnabled": false,
     // ESLint
     "eslint.filetypes": [
         "javascript",
@@ -10,6 +12,8 @@
     ],
     "eslint.run": "onSave",
     "eslint.autoFixOnSave": true,
+    // Prettier
+    "prettier.disableLanguages": ["python"],
     // Vetur / Vue
     // Fix bug with integration with coc-vetur and vue-language-server
     // per https://github.com/neoclide/coc-vetur/issues/28#issuecomment-597628197
