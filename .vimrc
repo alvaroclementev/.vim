@@ -137,6 +137,7 @@ nmap <C-L> <C-W>l
 " Buffer navigation
 nnoremap gb :bn<CR>
 nnoremap gB :bp<CR>
+nnoremap <Leader><Leader> :b#<CR>
 
 " Spell Checking
 nnoremap <silent> <F3> :setlocal spell! spelllang=en_us<CR>
@@ -226,6 +227,13 @@ nnoremap <Leader>b :Buffers<CR>   " Fuzzy find an open buffer
 nnoremap <Leader>r :Rg<CR>        " Fuzzy find text in the working directory
 nnoremap <Leader>cc :Commands<CR> " Fuzzy find Vim commands (like Ctrl-Shift-P
 nnoremap <Leader>H :Help<CR>     " Fuzzy find files in current directory
+
+" A mapping to show all files, since by default we ignore some of them
+if executable('rg')
+    command! -bang -nargs=* All
+        \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs'}))
+endif
+
 "                                 " in VSC or Sublime
 " }}}
 
