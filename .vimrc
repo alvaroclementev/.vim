@@ -40,10 +40,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 call plug#end()
 " }}}
-let mapleader=" "
 nnoremap <Space> <NOP>
+let mapleader=" "
 " Trying this for now
 " TODO: See if this is working for me
+nnoremap - <NOP>
 let maplocalleader="-"
 
 " Sensible default settings for vim UX {{{
@@ -309,11 +310,11 @@ command! -nargs=0 Format :call CocAction('format')
 augroup filetype_tex
     autocmd!
     " Compile to PDF in silent mode
-    autocmd Filetype tex nnoremap <silent> <Leader>tt :!latexmk -pdf -silent %<CR><CR>
+    autocmd Filetype tex nnoremap <silent> <LocalLeader>t :!latexmk -pdf -silent %<CR><CR>
     " Compile to PDF verbose
-    autocmd Filetype tex nnoremap <silent> <Leader>ta :!latexmk -pdf %<CR>
+    autocmd Filetype tex nnoremap <silent> <LocalLeader>v :!latexmk -pdf %<CR>
     " Open PDF preview (Skim has live preview prebuilt)
-    autocmd Filetype tex nnoremap <silent> <Leader>T :!open -a Skim %:r.pdf<CR><CR>
+    autocmd Filetype tex nnoremap <silent> <LocalLeader>T :!open -a Skim %:r.pdf<CR><CR>
 augroup END
 
 " vim-highlightedyank
