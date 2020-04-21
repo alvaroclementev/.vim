@@ -27,11 +27,17 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 " Lisps
 Plug 'guns/vim-sexp' "For selecting forms
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+" Plug 'junegunn/rainbow_parentheses.vim', { 'for': ['lisp', 'clojure', 'scheme'] }
 " Plug 'alvaroclementev/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 Plug 'jpalardy/vim-slime'
 
+" LaTeX
+Plug 'lervag/vimtex'
+Plug 'dpelle/vim-LanguageTool'
+
 " Eye candy
 Plug 'machakann/vim-highlightedyank'
+Plug 'junegunn/vim-easy-align'
 
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
@@ -51,7 +57,7 @@ let maplocalleader="-"
 syntax enable
 set background=dark
 let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme base16-atelier-dune
 " Link system clipboard with unnamed buffer (regular copy and paste)
 " set clipboard=unnamedplus
 " Disable beeping
@@ -110,6 +116,8 @@ let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#vimtex#enabled=1
+let g:airline#extensions#coc#enabled=1
 
 " TODO: Review this customization
 " function! AirlineInit()
@@ -146,7 +154,7 @@ nnoremap gB :bp<CR>
 nnoremap <Leader><Leader> :b#<CR>
 
 " Spell Checking
-nnoremap <silent> <F3> :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <F3> :setlocal spell! spelllang=es,en_us<CR>
 
 "TODO: Revise these ones
 "Way to open files from current directory
@@ -176,6 +184,7 @@ vnoremap ? ?\v
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 nnoremap <Leader>* /<C-R><C-A><CR>
 nnoremap <Leader># ?<C-R><C-A><CR>
+nnoremap <LocalLeader>r :redraw!<CR>
 
 "Capitalize WORD under cursor in INSERT MODE
 inoremap <C-U> <ESC>viWUEa
@@ -190,40 +199,15 @@ command! Wq wq
 command! Q q
 " }}}
 
+" For when we forget to open vim with sudo
+" TODO: This only works on *NIX systems
+cmap w!! w !sudo tee > /dev/null %
 
 " NERDTree settings (make NERDTreeCWD the active buffer's directory) {{{
 "set autochdir
 "let NERDTreeChDirMode=2
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 " }}}
-
-" The Silver Searcher (Ag) TODO: change grepprg to use Ag {{{
-" if executable('ag')
-"     "Use ag over grep
-"     set grepprg=ag\ --nogroup\ --nocolor
-"
-"     "Set up ack.vim to use Ag
-"     let g:ackprg = 'ag --nogroup --nocolor --column'
-"
-"     "Use Ag in Ctrl-P for listing files.
-"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-"
-"     "Ag is fast enough CtrlP needs no cache
-"     let g:ctrp_use_caching = 0
-" endif
-" }}}
-
-"" Ctrl-P Settings {{{
-"let g:ctrlp_map='<c-p>'
-"let g:ctrlp_cmd='CtrlP'
-"let g:ctrlp_working_path_mode='ra'
-""If a file is already open, open new file in new pane
-""let g:ctrlp_switch_buffer='et'
-""To ignore files in .gitignore and speed it up by x100
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-"let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<cr>'] }
-"let g:ctrlp_custom_ignore = 'node_modules\|.DS_Store\|.git\|node_modules/|.DS_Store/|.git/'
-"" }}}
 
 " FZF Settings {{{
 nnoremap <Leader>f :GFiles<CR>    " Fuzzy find git tracked files in current directory
@@ -240,7 +224,8 @@ if executable('rg')
         \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs'}))
 endif
 
-"                                 " in VSC or Sublime
+let g:fzf_layout={'down': '~20%'}
+
 " }}}
 
 " Coc.vim settings {{{
@@ -306,16 +291,47 @@ vmap <Leader>f <Plug>(coc-format-selected)
 command! -nargs=0 Format :call CocAction('format')
 " }}}
 
+" Writing
+
+" Spell checking
+" Automatically fix last bad word with the first suggestion
+inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 " LaTeX
+" vimtex
+let g:tex_flavor='latex'
+" TODO: Move this to a OS specific config
+if executable('Skim')
+    let g:vimtex_view_method='skim'
+elseif executable('SumatraPDF')
+    let g:vimtex_view_general_viewer='SumatraPDF'
+    let g:vimtex_view_general_options='-reuse-instance @pdf'
+    let g:vimtex_view_general_options_latexmk='-reuse-instance'
+endif
+let g:vimtex_quickfix_open_on_warning=0
+let g:vimtex_fold_enabled=0
+let g:tex_comment_nospell=1
+" Try this
+let g:tex_conceal='abdmgs'
 augroup filetype_tex
     autocmd!
-    " Compile to PDF in silent mode
-    autocmd Filetype tex nnoremap <silent> <LocalLeader>t :!latexmk -pdf -silent %<CR><CR>
-    " Compile to PDF verbose
-    autocmd Filetype tex nnoremap <silent> <LocalLeader>v :!latexmk -pdf %<CR>
-    " Open PDF preview (Skim has live preview prebuilt)
-    autocmd Filetype tex nnoremap <silent> <LocalLeader>T :!open -a Skim %:r.pdf<CR><CR>
+    autocmd FileType tex setlocal
+        \ conceallevel=1
+        \ spell
+        \ spelllang=es,en_us
+        \ updatetime=4000
+        \ colorcolumn=
+    autocmd FileType tex nmap <LocalLeader>s <Plug>(vimtex-compile-ss)
+    autocmd FileType tex nmap <LocalLeader>cc <Plug>(vimtex-cmd-create)
+    autocmd FileType tex xmap <LocalLeader>cc <Plug>(vimtex-cmd-create)
+    autocmd FileType tex nmap <LocalLeader>ce <Plug>(vimtex-cmd-create)emph<CR>
+    autocmd FileType tex xmap <LocalLeader>ce <Plug>(vimtex-cmd-create)emph<CR>
 augroup END
+
+" TODO: Move this to an autocommand to load only when you want it
+if isdirectory($HOME . '/languagetool')
+    let g:languagetool_jar='$HOME/languagetool/LanguageTool-4.9/languagetool-commandline.jar'
+    let g:languagetool_lang='es'
+endif
 
 " vim-highlightedyank
 " Compatibility with versions < 8.0.1394
@@ -324,12 +340,53 @@ if !exists('##TextYankPost')
 endif
 let g:highlightedyank_highlight_duration=750
 
+" vim-easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+" Rainbow colors
+" For some colorscheme, this does not pick
+" the correct default
+" let g:rainbow#colors = {
+" \   'dark': [
+" \     ['yellow',  'orange1'     ],
+" \     ['green',   'yellow1'     ],
+" \     ['cyan',    'greenyellow' ],
+" \     ['magenta', 'green1'      ],
+" \     ['red',     'springgreen1'],
+" \     ['yellow',  'cyan1'       ],
+" \     ['green',   'slateblue1'  ],
+" \     ['cyan',    'magenta1'    ],
+" \     ['magenta', 'purple1'     ]
+" \   ],
+" \   'light': [
+" \     ['darkyellow',  'orangered3'    ],
+" \     ['darkgreen',   'orange2'       ],
+" \     ['blue',        'yellow3'       ],
+" \     ['darkmagenta', 'olivedrab4'    ],
+" \     ['red',         'green4'        ],
+" \     ['darkyellow',  'paleturquoise3'],
+" \     ['darkgreen',   'deepskyblue4'  ],
+" \     ['blue',        'darkslateblue' ],
+" \     ['darkmagenta', 'darkviolet'    ]
+" \   ]
+" \ }
+
 " vim-SLIME
+let g:slime_no_mappings=1
+" Customize the mappings
+xmap <LocalLeader><LocalLeader> <Plug>SlimeRegionSend
+nmap <LocalLeader><LocalLeader> <Plug>SlimeParagraphSend
+
 let g:slime_target='tmux'
 let g:slime_paste_file=tempname()
 let g:slime_default_config={"socket_name": "default", "target_pane": "{right-of}"}
 let g:slime_dont_ask_default=1
 
+" Vim/Vimscript development
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " vim-vue
 let g:vue_pre_processors = 'detect_on_enter'
 
