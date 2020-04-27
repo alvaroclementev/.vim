@@ -300,7 +300,7 @@ inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 " vimtex
 let g:tex_flavor='latex'
 " TODO: Move this to a OS specific config
-if executable('Skim')
+if has('macunix')
     let g:vimtex_view_method='skim'
 elseif executable('SumatraPDF')
     let g:vimtex_view_general_viewer='SumatraPDF'
